@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 const cron = require('node-cron');
 require('dotenv').config();
-console.log("mail send through" ,process.env.EMAIL)
+console.log("mail send through -" ,process.env.EMAIL)
 
 // Create a transporter object using SMTP transport
 let transporter = nodemailer.createTransport({
@@ -20,8 +20,8 @@ cron.schedule('*/1 * * * *', () => {
 const currentTimeString = currentTime.toLocaleTimeString('en-US', {timeZone: 'Asia/Kolkata'});
 
 let mailOptions = {
-    from: 'navneetkumar.motivation@gmail.com', // Sender address
-    to: ['cec234051.it.cec@cgc.edu.in'], // Array of receiver addresses
+    from: process.env.EMAIL, // Sender address
+    to: ['cec234051.it.cec@cgc.edu.in','jhaprabhakar42@gmail.com'] // Array of receiver addresses
     subject: `Hello time is ${currentTimeString}`,
     text: `This is an automated email sent from Node.js backend. current time is ${currentTimeString} . its just a mail to check the working of my script `
 };
